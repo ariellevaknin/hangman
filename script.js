@@ -3,6 +3,7 @@ let container = document.getElementById('container');
 let hangman = document.getElementById('hangman');
 let loading = document.getElementById('loading');
 let hint = document.getElementById('hint');
+let keys = document.getElementsByClassName('key')
 let hintDef = document.getElementById('definition');
 let defContainer = document.getElementById('definition-container');
 let hintButton = document.getElementById('hint-button');
@@ -66,9 +67,18 @@ const randomWord = async function getRandomWordWithLength() {
 
 function startGame(word) {
     container.style.display = 'flex';
+    hangman.style.backgroundImage = '';
     hangman.style.display = 'flex';
     body.style.display = 'flex';
     loading.style.display = 'none';
+    hint.style.display = 'flex';
+    hintDef.style.display = 'none';
+    defContainer.style.display = 'none';
+
+    for (let i = 0; i < keys.length; i++) {
+        keys[i].style.backgroundColor = '#f39cf2';
+    }
+    
     letters(word);
 }
 
@@ -175,6 +185,7 @@ hintButton.addEventListener('click', function() {
 })
 
 function win() {
+    line.innerHTML = '';
     container.style.display = 'none';
     hangman.style.display = 'none';
     homeContainer.style.display = 'none';
@@ -186,6 +197,7 @@ function win() {
 }
 
 function lose() {
+    line.innerHTML = '';
     container.style.display = 'none';
     hangman.style.display = 'none';
     homeContainer.style.display = 'none';
