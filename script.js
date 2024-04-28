@@ -66,6 +66,8 @@ const randomWord = async function getRandomWordWithLength() {
 }
 
 function startGame(word) {
+    guesses = 0;
+    str = '';
     container.style.display = 'flex';
     hangman.style.backgroundImage = '';
     hangman.style.display = 'flex';
